@@ -60,10 +60,13 @@ The awesome people who donated so that I can keep this going <3
 
 - Dennis (@DennisJ__ on Twitter)
 - Isha Birla
+- M Faizaan Muzawar
 - Nikhil Kumar Kuppa
 - Oojal Kour
+- Praneeth Ratnagiri
 - Revanth Kumar Reddy
 - Ritwika Sarkar
+- Rutanjit Mandrekar
 - sid (@oldmonkbrownies on Twitter)
 - Supriya Nickam
 
