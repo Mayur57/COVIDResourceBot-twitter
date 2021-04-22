@@ -1,7 +1,7 @@
 ![header.png](https://i.ibb.co/ByW4HpR/assets-01.png)
 
 # The COVID Resources Bot Project
-___
+
 A Twitter bot that connects people willing to help with those in need. Follow the bot at [@resource_botIN](https://twitter.com/resource_botIN).
 
 The bot also has a website where you can find other such resources as well. Visit **resourcesbot.carrd.co**
@@ -58,6 +58,7 @@ As the bot is fully open source, you can always open a pull request with your de
 ## Supporters
 The awesome people who donated so that I can keep this going <3
 
+- Anjali Singh
 - Dennis (@DennisJ__ on Twitter)
 - Isha Birla
 - M Faizaan Muzawar
