@@ -31,30 +31,49 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 hashtags = [
     "#Remdesvir",
     "#remdesivir",
-    "#COVIDResourceBot", #hashtag for enabling already existing tweet threads
+    "#COVIDResourceBot",
     "#oxygen"
     ]
+
+# Hashtag for enabling already existing tweet threads
+REPLY_HASHTAG = hashtags[2].lower()
 
 # The bot will only look for tweets published on the present day
 # 25 tweets at a time to avoid reaching rate limits
 date_since = date.today()
 tweet_count = 25
 
+# Count number of fetching rounds done. Only for debug purpose.
+polling_counter = 0
+
 # Define a delay between each retweet to avoid processing overloading
-RETWEET_DELAY = 5 #seconds
+RETWEET_DELAY = 1 #seconds
 
 # Define the delay between each polling round to avoid
-POLLING_DELAY = 300 #seconds
+POLLING_DELAY = 1 #seconds
+
+# Handle exceptions
+def handle_exception(exp, tweet_id):
+    error_code = str(exp.reason[10:13])
+    if error_code == "327":
+        print("  D ---Skipping: " + tweet_id)
+    elif error_code == "139":
+        print("  D ---Already liked: " + tweet_id)
+    elif error_code == "185":
+        print("  D ---!!!Rate limit reached")
+    else:
+        print("ERROR: ---" + exp.reason)
+    return
 
 # Retweet given a tweet's ID
 def retweet(id):
     try:
-        print("---Retweeting: " + str(id))
+        print("  T ---Retweeting: " + str(id))
         api.retweet(id)
         time.sleep(RETWEET_DELAY)
 
-    except Exception as e:
-        print("ERROR: ---" + e.reason)
+    except tweepy.TweepError as e:
+        handle_exception(exp=e, tweet_id=str(id))
 
 # Handle the #covidresourcebot special hashtag
 def retweet_parent(tweet):
@@ -63,11 +82,11 @@ def retweet_parent(tweet):
     if tweet.in_reply_to_status_id != "None":
         # try-catch avoid the bot from exiting the program
         try:
-            print("!!!- RT hashtag was detected. Retweeting parent: " + str(tweet.in_reply_to_status_id))
+            print("  P ---Retweeting: " + str(tweet.in_reply_to_status_id))
             api.retweet(tweet.in_reply_to_status_id)
             time.sleep(RETWEET_DELAY)
-        except Exception as e:
-            print("ERROR: ---" + e.reason)
+        except tweepy.TweepError as e:
+            handle_exception(exp=e, tweet_id=str(tweet.id))
 
     # else retweet the tweet itself
     else:
@@ -78,12 +97,19 @@ def searchBot():
     for hashtag in hashtags:
         tweets = tweepy.Cursor(api.search, hashtag, since=date_since).items(tweet_count)
         for tweet in tweets:
-            if "#covidresourcebot" in tweet.text:
+            if REPLY_HASHTAG in tweet.text.lower():
                 retweet_parent(tweet)
             else:
                 retweet(tweet.id)
+                try:
+                    api.create_favorite(tweet.id)
+                except tweepy.TweepError as e:
+                    handle_exception(exp=e, tweet_id=str(tweet.id))
 
 # Infinitely run the function with a polling delay
+print("---------Starting the bot---------")
 while(True):
+    print("\n  D ---Polling Round: " + str(polling_counter))
     searchBot()
     time.sleep(POLLING_DELAY)
+    polling_counter = polling_counter + 1
