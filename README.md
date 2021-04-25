@@ -70,6 +70,7 @@ The awesome people who donated so that I can keep this going <3
 - Rutanjit Mandrekar
 - sid (@oldmonkbrownies on Twitter)
 - Supriya Nickam
+- Yash Saraf
 
 ## Donate
 Consider supporting my work by paying through UPI on **mayur072000@oksbi** or buying me a coffee:
