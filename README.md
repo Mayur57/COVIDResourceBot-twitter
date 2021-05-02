@@ -1,8 +1,10 @@
-![header.png](https://i.ibb.co/ByW4HpR/assets-01.png)
+![header.png](https://i.ibb.co/0Y0f1DR/e-03.png)
 
 # The COVID Resources Bot Project
 
 A Twitter bot that connects people willing to help with those in need. Follow the bot at [@resource_botIN](https://twitter.com/resource_botIN).
+
+**Disclaimer:** The COVID Resource Bot Project (which including its creator, supporters and development contributors) is **NOT** affiliated to the Governement of India or any other formal instituition. The creator is, in no way, endorsing any political beliefs ny making this tool (known as bot here after). The bot retweets are unmoderated and fully automated, which exempts the creator of any liablity in case it retweets anything inappropriate. Requests to improve or shut the bot completely will be entertained if the creator finds it valid.
 
 The bot also has a website where you can find other such resources as well. Visit **resourcesbot.carrd.co**
 
@@ -59,6 +61,7 @@ As the bot is fully open source, you can always open a pull request with your de
 The awesome people who donated so that I can keep this going <3
 
 - Anjali Singh
+- @BlondDebjeet on Twitter
 - Dennis (@DennisJ__ on Twitter)
 - Isha Birla
 - M Faizaan Muzawar
