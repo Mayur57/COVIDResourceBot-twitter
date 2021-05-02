@@ -45,14 +45,14 @@ Thank you so much! You can donate by buying me a coffee at **buymeacoffee.com/ma
 - Make sure you have Python v3+ installed
 - Install tweepy using ```pip3 install --user tweepy```
 - Clone the repository to your local machine
-- Navigate to ```bot/bot.py``` and change the following with your credentials:
+- Open the main python file by going to ```bot/bot.py``` and change the following lines to your credentials:
 ```
 consumer_key = '<REPLACE-WITH-YOUR-OWN>'
 consumer_secret = '<REPLACE-WITH-YOUR-OWN>'
 access_token = '<REPLACE-WITH-YOUR-OWN>'
 access_token_secret = '<REPLACE-WITH-YOUR-OWN>'
 ```
-- Navigate to the project directory and execute using ```python3 bot.py```
+- Open Command Prompt on Windows or Terminal on macOS and change working directory to the project directory and execute using ```python3 bot.py```
 
 ## Contribute Changes
 As the bot is fully open source, you can always open a pull request with your desired changes or suggestions and I can take a look to verify, test, and merge it.
